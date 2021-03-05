@@ -2,12 +2,16 @@ import styles from '../styles/Home.module.css'
 import Head from 'next/head'
 import fetch from 'node-fetch'
 import React, { useState, useEffect } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faThumbsUp, faReply, faEye, faHistory } from '@fortawesome/free-solid-svg-icons'
 
 const RenderUsers = ({ users }) => {
     return (
-        <div>
+        <div className={styles.listUser}>
             {users.map((user, i) =>
-                <a key={i} href={user.url} target='_blank'><img src={user.avatarURL} title={user.username} /></a>
+                <a key={i} href={user.url} target='_blank'>
+                    <img className={styles.avatar} src={user.avatarURL} title={user.username} />
+                </a>
             )}
         </div>
     )
@@ -17,18 +21,18 @@ const Rows = ({ topics }) => {
     return (
         <>
             {topics.map((topic, i) =>
-                <tr key={i}>
-                    <td>{i + 1}</td>
-                    <td>
-                        <a href={topic.url} title={topic.title} target='_blank'>{topic.title}</a>
+                <tr key={i} className={styles.rows}>
+                    <td><span className={styles.rows}>{i + 1}</span></td>
+                    <td className={styles.title}>
+                        <a className={styles.link} href={topic.url} title={topic.title} target='_blank'>{topic.title}</a>
                     </td>
                     <td>
                         <RenderUsers users={topic.users} />
                     </td>
-                    <td>{topic.likes}</td>
-                    <td>{topic.replies}</td>
-                    <td>{topic.views}</td>
-                    <td>{topic.activity}</td>
+                    <td><span className={styles.like}>{topic.likes}</span></td>
+                    <td><span className={styles.reply}>{topic.replies}</span></td>
+                    <td><span className={styles.view}>{topic.views}</span></td>
+                    <td><span className={styles.activity}>{topic.activity}</span></td>
                 </tr>
             )}
         </>
@@ -37,16 +41,20 @@ const Rows = ({ topics }) => {
 
 const Table = ({ topics }) => {
     return (
-        <table>
+        <table className={styles.table}>
             <tbody>
-                <tr>
-                    <th>#</th>
-                    <th>topics</th>
+                <tr className={styles.rows}>
+                    <th>
+                        <a href='https://forum.freecodecamp.org/' target='_blank'>
+                            <img className={styles.logo} src='https://aws1.discourse-cdn.com/freecodecamp/original/3X/3/b/3b515098283215730b65c76a721de0ab9c894fc8.png' title='FCC' />
+                        </a>
+                    </th>
                     <th></th>
-                    <th>likes</th>
-                    <th>replies</th>
-                    <th>views</th>
-                    <th>activity</th>
+                    <th></th>
+                    <th><FontAwesomeIcon icon={faThumbsUp} title='likes' /></th>
+                    <th><FontAwesomeIcon icon={faReply} title='replies' /></th>
+                    <th><FontAwesomeIcon icon={faEye} title='views' /></th>
+                    <th><FontAwesomeIcon icon={faHistory} title='activity' /></th>
                 </tr>
                 {topics == null ? <></> : <Rows topics={topics} />}
             </tbody>
