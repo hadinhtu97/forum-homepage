@@ -10,6 +10,10 @@
     "author": "Tu Ha Dinh",
     "license": "ISC",
     "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^1.2.34",
+        "@fortawesome/free-brands-svg-icons": "^5.15.2",
+        "@fortawesome/free-solid-svg-icons": "^5.15.2",
+        "@fortawesome/react-fontawesome": "^0.1.14",
         "next": "^10.0.7",
         "node-fetch": "^2.6.1",
         "react": "^17.0.1",
