@@ -1,3 +1,61 @@
 .main {
     text-align: center;
 }
+
+.table {
+    margin: 0.5rem auto;
+    padding: 0 0.5rem;
+    max-width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 1rem;
+}
+
+.logo {
+    width: 3rem;
+    height: auto;
+}
+
+.listUser {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar {
+    width: 1.5rem;
+    height: auto;
+    margin: 0 0.1rem;
+}
+
+.rows {
+    background-color: #dddee0;
+}
+
+.rows>th {
+    background-color: #090921;
+    color: #fff;
+    padding: 0.5rem 0.5rem;
+    font-weight: lighter;
+}
+
+.rows>td {
+    padding: 0.5rem;
+    color: #313146;
+    border: 1px solid #313146;
+}
+
+.title {
+    text-align: left;
+}
+
+.link {
+    width: 100%;
+    color: #313146;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.link:hover {
+    color: #090921;
+}
