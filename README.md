@@ -18,5 +18,8 @@ npm run build
 npm run start
 ```
 
+## APIs
+* GET: `[]/api/forum`, receive 30 latest topics of forum
+
 ## Demo 
 [Link demo](https://forum-homepage.hadinhtu97.repl.co/)
