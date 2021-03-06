@@ -39,6 +39,20 @@ const Rows = ({ topics }) => {
     )
 }
 
+const Loading = () => {
+    return (
+        <tr className={styles.rows}>
+            <td>#</td>
+            <td>Loading ...</td>
+            <td>Loading ...</td>
+            <td>Loading ...</td>
+            <td>Loading ...</td>
+            <td>Loading ...</td>
+            <td>Loading ...</td>
+        </tr>
+    )
+}
+
 const Table = ({ topics }) => {
     return (
         <table className={styles.table}>
@@ -56,7 +70,7 @@ const Table = ({ topics }) => {
                     <th><FontAwesomeIcon icon={faEye} title='views' /></th>
                     <th><FontAwesomeIcon icon={faHistory} title='activity' /></th>
                 </tr>
-                {topics == null ? <></> : <Rows topics={topics} />}
+                {topics == null ? <Loading /> : <Rows topics={topics} />}
             </tbody>
         </table>
     )
