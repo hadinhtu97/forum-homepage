@@ -4,6 +4,7 @@ import fetch from 'node-fetch'
 import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbsUp, faReply, faEye, faHistory } from '@fortawesome/free-solid-svg-icons'
+import Loader from 'react-loader-spinner'
 
 const RenderUsers = ({ users }) => {
     return (
@@ -42,13 +43,13 @@ const Rows = ({ topics }) => {
 const Loading = () => {
     return (
         <tr className={styles.rows}>
-            <td>#</td>
-            <td>Loading ...</td>
-            <td>Loading ...</td>
-            <td>Loading ...</td>
-            <td>Loading ...</td>
-            <td>Loading ...</td>
-            <td>Loading ...</td>
+            <td><Loader type='Oval' color="#313146" height='1rem' width='1rem' /></td>
+            <td><Loader type='Oval' color="#313146" height='1rem' width='1rem' /></td>
+            <td><Loader type='Oval' color="#313146" height='1rem' width='1rem' /></td>
+            <td><Loader type='Oval' color="#313146" height='1rem' width='1rem' /></td>
+            <td><Loader type='Oval' color="#313146" height='1rem' width='1rem' /></td>
+            <td><Loader type='Oval' color="#313146" height='1rem' width='1rem' /></td>
+            <td><Loader type='Oval' color="#313146" height='1rem' width='1rem' /></td>
         </tr>
     )
 }
