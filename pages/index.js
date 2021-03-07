@@ -1,10 +1,10 @@
 import styles from '../styles/Home.module.css'
 import Head from 'next/head'
 import fetch from 'node-fetch'
-import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbsUp, faReply, faEye, faHistory } from '@fortawesome/free-solid-svg-icons'
 import Loader from 'react-loader-spinner'
+import useSWR from 'swr'
 
 const RenderUsers = ({ users }) => {
     return (
@@ -71,25 +71,17 @@ const Table = ({ topics }) => {
                     <th><FontAwesomeIcon icon={faEye} title='views' /></th>
                     <th><FontAwesomeIcon icon={faHistory} title='activity' /></th>
                 </tr>
-                {topics == null ? <Loading /> : <Rows topics={topics} />}
+                {topics == undefined ? <Loading /> : <Rows topics={topics} />}
             </tbody>
         </table>
     )
 }
 
+const fetcher = (api) => fetch(api).then(res => res.json())
+
 const Home = () => {
 
-    const [topics, setTopics] = useState(null)
-
-    const getTopicsThenSetTopics = async () => {
-        let res = await fetch('/api/forum')
-        let data = await res.json()
-        data.hasOwnProperty('error') == true ? setTopics(null) : setTopics(data)
-    }
-
-    useEffect(() => {
-        getTopicsThenSetTopics()
-    }, [])
+    const { data, error } = useSWR('/api/forum', fetcher)
 
     return (
         <>
@@ -97,7 +89,7 @@ const Home = () => {
                 <title>Forum Hompage</title>
             </Head>
             <main className={styles.main}>
-                <Table topics={topics} />
+                <Table topics={data} />
             </main>
         </>
     )
